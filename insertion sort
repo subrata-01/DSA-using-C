@@ -1,0 +1,11 @@
+void insertion_sort(int *arr,int n) // n is the size of the array
+{
+	int i,j,current;
+	for(i=1;i<n;i++)
+	{
+		current=arr[i];
+		for(j=i-1;arr[j]>current && j>=0;j--)
+			arr[j+1]=arr[j];
+		arr[j+1]=current;	
+	}
+}
