@@ -1,0 +1,43 @@
+#include<stdio.h>
+void swap(int *a,int *b)
+{
+	int temp;
+	temp=*a;
+	*a=*b;
+	*b=temp;
+}
+int PATITION(int arr[],int s,int e)
+{
+	int pivot=arr[e];
+	int i=s-1;
+	int j,temp;
+	for(j=s;j<e;j++)
+	{
+		temp=arr[j];
+		if(temp<pivot)
+		{
+			i=i+1;
+			swap(&arr[i],&arr[j]);
+		}
+	}
+	swap(&arr[i+1],&arr[e]);
+	return i+1;
+}
+void quick_sort(int arr[],int s,int e)
+{
+	int pos;
+	if (s<e)
+	{
+		pos=PATITION(arr,s,e);
+		quick_sort(arr,s,pos-1);
+		quick_sort(arr,pos+1,e);
+	}	
+}
+int main()
+{
+	int i;
+	int arr[]={13,5,20,9,7,1,11};
+	quick_sort(arr,0,6);
+	for(i=0;i<=6;i++)
+	printf("%d ",arr[i]);
+}
