@@ -1,0 +1,36 @@
+#include<stdio.h>
+int binary_search(int *arr,int n,int key)
+{
+	int beg,end,mid;
+	beg=0;
+	end=n-1;
+	mid=(beg+end)/2;
+	while(beg<=end && arr[mid]!=key)
+	{
+		if(arr[mid]<=key)
+		beg=mid+1;
+		else
+		end=mid-1;
+		mid=(beg+end)/2;
+	}
+	if(beg>end)
+	return -1;
+	else
+	return mid;
+}
+int main()
+{
+	int pos,key,n,i,arr[20];
+	printf("enter numnber of elementes : ");
+	scanf("%d",&n);
+	printf("enter an sorted array : \n");
+	for(i=0;i<n;i++)
+	scanf("%d",&arr[i]);
+	printf("choose the element you want of find : ");
+	scanf("%d",&key);
+	pos=binary_search(arr,n,key);
+	if(pos==-1)
+	printf("element not found in the array....");
+	else
+	printf("%d is found in %d position.",arr[pos],pos+1);
+}
